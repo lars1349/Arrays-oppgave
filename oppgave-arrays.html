@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(211, 158, 11);
+            place-items: center;
+
+        }
+    </style>
+
+    <h1>Velkommen til dyrebutikken!</h1>
+    <h4>Velg et dyr for å legge det i handlekurven. Du har fem plasser i kurven.</h4>
+    <!-- <button onclick="addAnimalToCart()">Klikk her for å legge til dyr i handlekurven</button> -->
+    <ul id="animalList"></ul>
+    <h2>Handlekurv:</h2>
+    <ul id="cartList"></ul>
+
+    <script>
+        // Oppgave: 
+        // Bruk det du har lært om å legge inn data i arrays og hvordan å hente data
+        // fra arrays og lag en handlevogn!
+        // Når du trykker på knappen "add to cart", tar du inn input fra brukeren
+        // og legger til og oppdaterer listen din i viewet.
+
+        let items = ['Skilpadde', 'Tiger', 'Neshorn', 'Leopard', 'Giraff'];
+        let allAnimals = 0;
+
+        function addAnimalToCart(i) {
+            if (allAnimals < items.length) { // Sjekker om det er dyr igjen i butikken som ikke er valgt.
+                let list = document.getElementById('cartList');
+                list.innerHTML += `<li>${items[i]}</li>`; // Legger til valgt dyr i handlekurv-listen.
+                allAnimals++; // Holder orden på hvilket dyr som er lagt til for å unngå duplikater.
+            } else {
+                alert("Handlekurven er nå full");
+            }
+        }
+
+        function updateView() {
+            let list = document.getElementById('animalList');
+            list.innerHTML = ''; // Resetter lista først så ikke det blir dobbelt opp.
+            for (let i = 0; i < items.length; i++) {
+                list.innerHTML += `<button onclick="addAnimalToCart(${i})">${items[i]}</button>`; // Legger til hvert dyr i handlekurven.
+            }
+        }
+        updateView();
+
+
+    </script>
+</body>
+</html>
